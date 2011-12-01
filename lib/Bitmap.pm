@@ -72,7 +72,7 @@ class Header {
     }
 }
 
-class Bitmap:auth<VienosNotes>:version<1.00> {
+class Bitmap:auth<VienosNotes>:version<1.01> {
 
     has @.pixels;
     has Header $.header;
@@ -99,11 +99,11 @@ class Bitmap:auth<VienosNotes>:version<1.00> {
         $target.close;
     }
 
-    method getpixel (Int $x where { 0 <= $_ < $!header.width -1 }, Int $y where { 0 <= $_ < $!header.height.abs -1} ) {
+    method getpixel (Int $x where { 0 <= $_ < $!header.width }, Int $y where { 0 <= $_ < $!header.height.abs } ) {
         return @!pixels[$y][$x];
     }
 
-    method setpixel (Int $x where { 0 <= $_ < $!header.width -1 }, Int $y where { 0 <= $_ < $!header.height.abs -1},
+    method setpixel (Int $x where { 0 <= $_ < $!header.width }, Int $y where { 0 <= $_ < $!header.height.abs },
                      Int $b where { $_ ~~ 0..255 } , Int $g where { $_ ~~ 0..255 }, Int $r where { $_ ~~ 0..255 }) {
         @!pixels[$y][$x] = ($b, $g, $r);
     }
