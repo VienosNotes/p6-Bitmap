@@ -85,7 +85,6 @@ class Bitmap:auth<VienosNotes>:version<1.01> {
 
     method write (Str $file) {
         my $target = open $file, :w, :bin;
-        say $!header.dump;
         $target.write($!header.dump);
 
         for @!pixels -> @line {
